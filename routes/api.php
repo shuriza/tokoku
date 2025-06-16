@@ -19,6 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/callback-test', function () {
-    return response()->json(['message' => 'Tunnel jalan!']);
-});
+/*  ⬇ ENDPOINT NOTIFIKASI MIDTRANS  ⬇  */
+Route::match(['get', 'post'], '/callback', [MidtransController::class, 'callback'])
+     ->name('midtrans.callback');
